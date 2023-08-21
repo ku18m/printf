@@ -2,6 +2,7 @@
 #define MAIN
 #include <unistd.h>
 #include <stdarg.h>
+#include <stdlib.h>
 /**
  * struct print_all - struct that contains flags & it's functions.
  *
@@ -15,7 +16,7 @@ typedef struct print_all
 	int (*func)(va_list args);
 } printfuncs;
 int _printf(const char *format, ...);
+int (*print_handler(char c))(va_list);
 int print_c(va_list args);
 int print_s(va_list args);
-int print_perc(va_list args);
 #endif

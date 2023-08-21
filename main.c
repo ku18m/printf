@@ -9,11 +9,14 @@
  */
 int main(void)
 {
-	char *str = "Hi_first";
+	/*char *str = "Hi_first";*/
+	int i;
 
-	_printf("Let's try to printf a simple sentence.\n");
-	printf("Let's try to printf a simple sentence.\n");
-	_printf("Length:[%s, %c, %v]\n", str, 'M');
-	printf("Length:[%s, %c, %v]\n", str, 'M');
+	/*_printf("Let's try to printf a simple sentence.\n");*/
+	/*printf("Let's try to printf a simple sentence.\n");*/
+	i = _printf("%%%", NULL, 'c');
+	/*o = _printf("%%");*/
+	/*o = printf("%s", NULL);*/
+	printf("\n%d\n", i);
 	return (0);
 }

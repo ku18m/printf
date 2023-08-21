@@ -31,7 +31,11 @@ int print_s(va_list args)
 	int i = 0;
 
 	c = va_arg(args, char *);
-	while (c[i] != '\0')
+	if (c == NULL)
+	{
+		c = "(null)";
+	}
+	while (c[i])
 	{
 		write(1, &c[i], 1);
 		i++;
