@@ -18,8 +18,3 @@
 <li>All your header files should be include guarded</li>
 <li>Note that we will not provide the _putchar function for this project</li>
 </ul>
-
-<h2>Tasks</h2>
-
-| Task | File |
-| ---- | ---- |
