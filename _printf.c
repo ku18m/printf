@@ -63,7 +63,7 @@ unsigned int (*f)(va_list, buffer *, unsigned char, int, int, unsigned char);
  *
  * @format: Character string to print - may contain directives.
  *
- * Return: The number of characters printed.
+ * Return: The number of characters printed OR (-1) if fails.
  */
 int _printf(const char *format, ...)
 {
