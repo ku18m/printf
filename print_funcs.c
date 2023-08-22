@@ -52,44 +52,41 @@ int print_s(va_list args)
  */
 int print_i(va_list args)
 {
-	int temp, num, i, digits = 0;
+	int temp, num, digits = 0, isNegative = 0;
 	char *str;
 
-	num = va_arg(args, int), temp = num;
-	if (num == 0)
+	num = va_arg(args, int);
+	if (num == 0 || !num)
 	{
 		write(1, "0", 1);
 		return (1);
 	}
-	else
+	temp = num;
+	if (num < 0)
 	{
+		isNegative = 1;
+		num = -num;
+	}
+	else
 		while (temp != 0)
 			temp /= 10, digits++;
-	}
-	str = (char *)malloc((digits + 1) * sizeof(char));
-	if (num < 0 && num)
-	{
-		num = num * -1;
-		str = (char *)malloc((digits + 2) * sizeof(char));
+	str = (char *)malloc((digits + isNegative + 1) * sizeof(char));
+	str[digits + isNegative] = '\0';
+	if (isNegative)
 		str[0] = '-';
-		digits++, str[digits] = '\0';
-	}
-	else
-	{
-		str[digits] = '\0';
-	}
 	while (num != 0)
 	{
-		digits--, str[digits] = (char)((num % 10) + '0');
+		digits--, str[digits + isNegative] = (char)((num % 10) + '0');
 		num /= 10;
 	}
-	i = 0;
-	while (str[i] != '\0')
+	temp = 0;
+	while (str[temp])
 	{
-		write(1, &str[i], 1), i++;
+		write(1, &str[temp], 1);
+		temp++;
 	}
 	free(str);
-	return (i);
+	return (temp);
 }
 
 /**
@@ -107,16 +104,16 @@ int print_b(va_list args)
 	num = va_arg(args, int);
 	if (num == 0)
 	{
-        write(1, "0", 1);
-        return (1);
-    }
+		write(1, "0", 1);
+		return (1);
+	}
 	i = 0;
-    while (num > 0)
+	while (num > 0)
 	{
-        bin[i] = (num % 2) + 48;
-        num = num / 2;
-        i++;
-    }
+		bin[i] = (num % 2) + 48;
+		num = num / 2;
+		i++;
+	}
 	o = i;
 	while (i != 0)
 	{
