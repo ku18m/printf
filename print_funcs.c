@@ -67,7 +67,7 @@ int print_i(va_list args)
 			temp /= 10, digits++;
 	}
 	str = (char *)malloc((digits + 1) * sizeof(char));
-	if (num < 0)
+	if (num < 0 && num)
 	{
 		num = num * -1;
 		str = (char *)malloc((digits + 2) * sizeof(char));
@@ -90,4 +90,38 @@ int print_i(va_list args)
 	}
 	free(str);
 	return (i);
+}
+
+/**
+ * print_b - prints integers in binary.
+ *
+ * @args: a va_list that holds the variables.
+ *
+ * Return: the number of characters printed.
+ */
+int print_b(va_list args)
+{
+	unsigned int num, i, o;
+	char bin[32];
+
+	num = va_arg(args, int);
+	if (num == 0)
+	{
+        write(1, "0", 1);
+        return (1);
+    }
+	i = 0;
+    while (num > 0)
+	{
+        bin[i] = (num % 2) + 48;
+        num = num / 2;
+        i++;
+    }
+	o = i;
+	while (i != 0)
+	{
+		i--;
+		write(1, &bin[i], 1);
+	}
+	return (o);
 }

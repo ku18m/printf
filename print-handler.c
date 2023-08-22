@@ -16,6 +16,7 @@ int (*print_handler(char c))(va_list)
 		{'s', print_s},
 		{'i', print_i},
 		{'d', print_i},
+		{'b', print_b},
 		{'\0', NULL}
 	};
 
