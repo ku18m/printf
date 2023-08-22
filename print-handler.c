@@ -14,6 +14,8 @@ int (*print_handler(char c))(va_list)
 	printfuncs printfun[] = {
 		{'c', print_c},
 		{'s', print_s},
+		{'i', print_i},
+		{'d', print_i},
 		{'\0', NULL}
 	};
 
